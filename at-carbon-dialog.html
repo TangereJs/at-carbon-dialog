@@ -1,0 +1,105 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+Copyright (c) 2017 adenin TECHNOLOGIES
+
+based on paper-dialog but with basic responsive, fullscreen dialog 
+-->
+
+<link rel="import" href="../tangere/tangere.html">
+<link rel="import" href="../neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../paper-dialog-behavior/paper-dialog-behavior.html">
+<link rel="import" href="../paper-dialog-behavior/paper-dialog-shared-styles.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../at-carbon-icon/at-carbon-icon.html">
+
+
+<dom-module id="at-carbon-dialog">
+  <style>
+    :host(.fullscreen) {
+      left: 0 !important;
+      top: 0 !important;
+      transition: all 300ms ease 0s;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      margin: 0px !important;
+    }
+    
+    #headerContent {
+      @apply(--layout-horizontal);
+      @apply(--layout-end-justified);
+    }
+    
+    #header {
+      display: none;
+    }
+    
+    :host(.fullscreen) #header {
+      display: block;
+    }
+  </style>
+  <template>
+    <style include="paper-dialog-shared-styles"></style>
+    <div id="header">
+      <div id="headerContent">
+        <div id="close" on-tap="_closeClick">
+          <at-carbon-icon icon="now:cancel"></at-carbon-icon>
+        </div>
+      </div>
+    </div>
+    <content></content>
+  </template>
+</dom-module>
+
+<script>
+  (function () {
+
+    Polymer({
+
+      is: 'at-carbon-dialog',
+
+      behaviors: [
+      Polymer.PaperDialogBehavior,
+      Polymer.NeonAnimationRunnerBehavior
+    ],
+
+      listeners: {
+        'neon-animation-finish': '_onNeonAnimationFinish'
+      },
+
+      _closeClick: function() {
+        this.close();
+      },
+      
+      _renderOpened: function () {
+        this.cancelAnimation();
+        this.playAnimation('entry');
+      },
+
+      _renderClosed: function () {
+        this.cancelAnimation();
+        this.playAnimation('exit');
+      },
+
+      _onNeonAnimationFinish: function () {
+        if (this.opened) {
+          this._finishRenderOpened();
+          if (window.screen.width < 600) {
+            Polymer.dom(this).classList.add("fullscreen");
+          } else {
+            Polymer.dom(this).classList.remove("fullscreen");
+          }
+
+        } else {
+          Polymer.dom(this).classList.remove("fullscreen");
+          this._finishRenderClosed();
+        }
+      }
+
+    });
+
+  })();
+</script>
