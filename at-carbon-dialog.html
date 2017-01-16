@@ -27,6 +27,19 @@ based on paper-dialog but with basic responsive, fullscreen dialog
       max-height: 100% !important;
       margin: 0px !important;
     }
+
+     :host > ::content > * {
+        margin-top: 0 !important;
+        padding: 0 !important;
+      }
+
+      :host > ::content > *:first-child {
+        margin-top: 0 !important;
+      }
+
+      :host > ::content > *:last-child {
+        margin-bottom: 0 !important;
+      }
     
     #headerContent {
       @apply(--layout-horizontal);
@@ -87,7 +100,8 @@ based on paper-dialog but with basic responsive, fullscreen dialog
       _onNeonAnimationFinish: function () {
         if (this.opened) {
           this._finishRenderOpened();
-          if (window.screen.width < 600) {
+          
+          if (window.innerWidth < 600) {
             Polymer.dom(this).classList.add("fullscreen");
           } else {
             Polymer.dom(this).classList.remove("fullscreen");

@@ -1,8 +1,8 @@
 {
   "name": "at-carbon-dialog",
   "description": "A responsive Material Design dialog",
-  "version": "1.0.0.0",  
-  "private": true,  
+  "version": "1.0.0.13",
+  "private": true,
   "dependencies": {
     "neon-animation": "PolymerElements/neon-animation#^1.0.0",
     "paper-dialog-behavior": "PolymerElements/paper-dialog-behavior#^1.0.0",
