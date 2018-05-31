@@ -68,16 +68,16 @@ based on paper-dialog but with basic responsive, fullscreen dialog
 </dom-module>
 
 <script>
-  (function () {
+  (function() {
 
     Polymer({
 
       is: 'at-carbon-dialog',
 
       behaviors: [
-      Polymer.PaperDialogBehavior,
-      Polymer.NeonAnimationRunnerBehavior
-    ],
+        Polymer.PaperDialogBehavior,
+        Polymer.NeonAnimationRunnerBehavior
+      ],
 
       listeners: {
         'neon-animation-finish': '_onNeonAnimationFinish'
@@ -86,21 +86,21 @@ based on paper-dialog but with basic responsive, fullscreen dialog
       _closeClick: function() {
         this.close();
       },
-      
-      _renderOpened: function () {
+
+      _renderOpened: function() {
         this.cancelAnimation();
         this.playAnimation('entry');
       },
 
-      _renderClosed: function () {
+      _renderClosed: function() {
         this.cancelAnimation();
         this.playAnimation('exit');
       },
 
-      _onNeonAnimationFinish: function () {
+      _onNeonAnimationFinish: function() {
         if (this.opened) {
           this._finishRenderOpened();
-          
+
           if (window.innerWidth < 600) {
             Polymer.dom(this).classList.add("fullscreen");
           } else {
