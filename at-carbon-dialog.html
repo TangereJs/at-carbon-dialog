@@ -16,46 +16,46 @@ based on paper-dialog but with basic responsive, fullscreen dialog
 
 
 <dom-module id="at-carbon-dialog">
-  <style>
-    :host(.fullscreen) {
-      left: 0 !important;
-      top: 0 !important;
-      transition: all 300ms ease 0s;
-      width: 100% !important;
-      height: 100% !important;
-      max-width: 100% !important;
-      max-height: 100% !important;
-      margin: 0px !important;
-    }
+  <template>
+    <style include="paper-dialog-shared-styles"></style>
+    <style>
+      :host(.fullscreen) {
+        left: 0 !important;
+        top: 0 !important;
+        transition: all 300ms ease 0s;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        margin: 0px !important;
+      }
 
-     :host > ::content > * {
+      :host> ::content>* {
         margin-top: 0 !important;
         padding: 0 !important;
       }
 
-      :host > ::content > *:first-child {
+      :host> ::content>*:first-child {
         margin-top: 0 !important;
       }
 
-      :host > ::content > *:last-child {
+      :host> ::content>*:last-child {
         margin-bottom: 0 !important;
       }
-    
-    #headerContent {
-      @apply(--layout-horizontal);
-      @apply(--layout-end-justified);
-    }
-    
-    #header {
-      display: none;
-    }
-    
-    :host(.fullscreen) #header {
-      display: block;
-    }
-  </style>
-  <template>
-    <style include="paper-dialog-shared-styles"></style>
+
+      #headerContent {
+        @apply(--layout-horizontal);
+        @apply(--layout-end-justified);
+      }
+
+      #header {
+        display: none;
+      }
+
+      :host(.fullscreen) #header {
+        display: block;
+      }
+    </style>
     <div id="header">
       <div id="headerContent">
         <div id="close" on-tap="_closeClick">
