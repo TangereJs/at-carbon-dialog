@@ -1,13 +1,14 @@
 {
   "name": "at-carbon-dialog",
   "description": "A responsive Material Design dialog",
-  "version": "1.0.0.13",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
-    "neon-animation": "PolymerElements/neon-animation#^1.0.0",
-    "paper-dialog-behavior": "PolymerElements/paper-dialog-behavior#^1.0.0",
-    "iron-overlay-behavior": "PolymerElements/iron-overlay-behavior#^1.7.0",
-    "paper-styles": "PolymerElements/paper-styles#^1.0.0",
+    "neon-animation": "PolymerElements/neon-animation#^2.0.0",
+    "paper-dialog-behavior": "PolymerElements/paper-dialog-behavior#^2.0.0",
+    "iron-overlay-behavior": "PolymerElements/iron-overlay-behavior#^2.0.0",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
+    "at-carbon-icon": "TangereJs/at-carbon-icon#master",
     "tangere": "tangere/tangere#master"
   }
 }
