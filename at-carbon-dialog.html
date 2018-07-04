@@ -30,6 +30,21 @@ based on paper-dialog but with basic responsive, fullscreen dialog
         margin: 0px !important;
       }
 
+      /* we need ::slotted selector for polymer 2.x*/
+      :host> ::slotted>* {
+        margin-top: 0 !important;
+        padding: 0 !important;
+      }
+
+      :host> ::slotted>*:first-child {
+        margin-top: 0 !important;
+      }
+
+      :host> ::slotted>*:last-child {
+        margin-bottom: 0 !important;
+      }
+      
+      /* we keep ::content selector for polymer 1.x*/
       :host> ::content>* {
         margin-top: 0 !important;
         padding: 0 !important;
@@ -63,7 +78,10 @@ based on paper-dialog but with basic responsive, fullscreen dialog
         </div>
       </div>
     </div>
+    <!-- we keep content tag for polymer 1.x -->
     <content></content>
+    <!-- we add slot tag for polymer 2.x -->
+    <slot></slot>
   </template>
 </dom-module>
 
