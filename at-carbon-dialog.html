@@ -105,6 +105,33 @@ based on paper-dialog but with basic responsive, fullscreen dialog
         this.close();
       },
 
+      // overriden from iron-overlay-behavior
+      open: function () {
+        if(this.opened == false) {
+          this.style.zIndex = Tangere.layerOpen();
+          this._setCanceled(false);
+          this.opened = true;
+        }
+      },
+
+      // overriden from iron-overlay-behavior
+      close: function() {
+        if(this.opened == true) {
+          Tangere.layerClose();
+          this._setCanceled(false);
+          this.opened = false;
+        }
+      },
+
+      // overriden from iron-overlay-behavior
+      cancel: function() {
+        if(this.opened == true) {
+          Tangere.layerClose();
+          this._setCanceled(true);
+          this.opened = false;
+        }
+      },
+
       _renderOpened: function() {
         this.cancelAnimation();
         this.playAnimation('entry');
