@@ -4,21 +4,30 @@ Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
 Copyright (c) 2017 adenin TECHNOLOGIES
 
-based on paper-dialog but with basic responsive, fullscreen dialog 
+based on paper-dialog but with basic responsive, fullscreen dialog
 -->
 
 <link rel="import" href="../tangere/tangere.html">
 <link rel="import" href="../neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../paper-dialog-behavior/paper-dialog-behavior.html">
-<link rel="import" href="../paper-dialog-behavior/paper-dialog-shared-styles.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../at-carbon-icon/at-carbon-icon.html">
 
 
 <dom-module id="at-carbon-dialog">
   <template>
-    <style include="paper-dialog-shared-styles"></style>
     <style>
+      :host {
+        display: block;
+        margin: 24px 40px;
+        background: var(--paper-dialog-background-color, var(--primary-background-color));
+        color: var(--paper-dialog-color, var(--primary-text-color));
+
+        @apply --paper-font-body1;
+        @apply --shadow-elevation-16dp;
+        @apply --paper-dialog;
+      }
+
       :host(.fullscreen) {
         left: 0 !important;
         top: 0 !important;
@@ -30,32 +39,8 @@ based on paper-dialog but with basic responsive, fullscreen dialog
         margin: 0px !important;
       }
 
-      /* we need ::slotted selector for polymer 2.x*/
-      :host> ::slotted>* {
-        margin-top: 0 !important;
-        padding: 0 !important;
-      }
-
-      :host> ::slotted>*:first-child {
-        margin-top: 0 !important;
-      }
-
-      :host> ::slotted>*:last-child {
-        margin-bottom: 0 !important;
-      }
-      
-      /* we keep ::content selector for polymer 1.x*/
-      :host> ::content>* {
-        margin-top: 0 !important;
-        padding: 0 !important;
-      }
-
-      :host> ::content>*:first-child {
-        margin-top: 0 !important;
-      }
-
-      :host> ::content>*:last-child {
-        margin-bottom: 0 !important;
+      :host(.fullscreen) #header {
+        display: block;
       }
 
       #headerContent {
@@ -67,9 +52,43 @@ based on paper-dialog but with basic responsive, fullscreen dialog
         display: none;
       }
 
-      :host(.fullscreen) #header {
-        display: block;
+      :host > ::slotted(*) {
+        margin-top: 20px !important;
+        padding: 0 24px !important;
       }
+
+      :host > ::slotted(*:first-child) {
+        margin-top: 24px !important;
+      }
+
+      :host > ::slotted(*:last-child) {
+        margin-bottom: 24px;
+      }
+
+      :host > ::slotted(h2) {
+        position: relative;
+        margin: 0;
+
+        @apply --paper-font-title;
+        @apply --paper-dialog-title;
+      }
+
+      :host > ::slotted(h2:first-child) {
+        margin-top: 24px;
+        @apply --paper-dialog-title;
+      }
+
+      :host > ::slotted(.paper-dialog-buttons),
+      :host > ::slotted(.buttons) {
+        position: relative;
+        padding: 8px 8px 8px 24px !important;
+        margin: 0 !important;
+        color: var(--paper-dialog-button-color, var(--primary-color));
+
+        @apply --layout-horizontal;
+        @apply --layout-end-justified;
+      }
+
     </style>
     <div id="header">
       <div id="headerContent">
